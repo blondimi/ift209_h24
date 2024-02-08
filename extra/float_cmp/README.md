@@ -4,20 +4,36 @@ Suite au devoir 2 de la session H24, plusieurs questions ont surgi sur des compa
 de nombres en virgule flottante. Bien qu'ils ne soient introduits que vers la fin de la session, voyons pourquoi il est
 risqué de les utiliser.
 
-## Tester si d ≤ √x
+## Tester si d ≤ √n
 
-## Tester si x est divisible par d
+Supposons que l'on désire tester si un entier non signé _d_ est inférieur ou égal à la racine carrée d'un
+entier non signé _n_. Il est tentant de calculer la racine carrée de _n_ dans nombre en virgule flottante,
+puis de le comparer à _d_. Or, ce raisonnement suppose que la racine carrée est exacte (ou que son arrondi
+vers le bas l'est).
+
+Voyons que le résultat peut être surprenant. Par exemple, considérons ce code C++: 
+
+```c++
+  unsigned long n = 9007199254740992;
+  double        x = sqrt((double)n);
+  double        y = (x * x) - n;
+```
+Celui-ci se termine avec ```y = 2```. Autrement dit, ce code indique que _(√n)² - n = 2_, alors que mathématiquement
+la différence devrait être nulle. Pire encore, en débutant avec ```n = 9007199254740992000```, on termine avec
+```y = 1024```.
+
+## Tester si n est divisible par d
 
 ### Test via les entiers
 
-Cherchons à tester si un entier non signé _x_ est divisible par un entier non signé _d_ (où _2 ≤ d < x_). Dans un langage
-comme C++, il suffit de tester ```x % d == 0```. Or, rappelons que dans le langage d'assemblage de l'architecture ARMv8,
+Cherchons à tester si un entier non signé _n_ est divisible par un entier non signé _d_ (où _2 ≤ d < n_). Dans un langage
+comme C++, il suffit de tester ```n % d == 0```. Or, rappelons que dans le langage d'assemblage de l'architecture ARMv8,
 il n'y a pas de modulo. Ainsi, nous pouvons plutôt combiner une division entière et une multiplication:
 
 ```c++
-bool est_divisible_A(unsigned long x, unsigned long d)
+bool est_divisible_A(unsigned long n, unsigned long d)
 {
-  return (x == ((x / d) * d));
+  return (n == ((n / d) * d));
 }
 ```
 ce qui se traduit environ comme suit en langage d'assemblage:
@@ -29,17 +45,17 @@ ce qui se traduit environ comme suit en langage d'assemblage:
 
 ### Test via les nombres en virgule flottante
 
-Il a été proposé de plutôt passer par les nombres en virgule flottante. Par exemple, si _x = 23_ et _d = 5_,
+Il a été proposé de plutôt passer par les nombres en virgule flottante. Par exemple, si _n = 23_ et _d = 5_,
 alors on calcule _23 ÷ 5 = 4_ et _23 / 5 = 4.6_, et, puisque _4 ≠ 4.6_, on en conclue que _23_ n'est pas
 divisible par _5_ (ce qui est correct). En général, la procédure s'implémente comme suit:
 
 ```c++
-bool est_divisible_B(unsigned long x, unsigned long d)
+bool est_divisible_B(unsigned long n, unsigned long d)
 {
-  unsigned long y = x / d;
-  double        z = ((double)x) / ((double)d);
+  unsigned long x = n / d;
+  double        y = ((double)n) / ((double)d);
 
-  return (y == z);
+  return (x == y);
 }
 ```
 
