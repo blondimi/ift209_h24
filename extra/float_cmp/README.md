@@ -8,8 +8,7 @@ risqué de les utiliser.
 
 Supposons que l'on désire tester si un entier non signé _d_ est inférieur ou égal à la racine carrée d'un
 entier non signé _n_. Il est tentant de calculer la racine carrée de _n_ dans un nombre en virgule flottante,
-puis de le comparer à _d_. Or, ce raisonnement suppose que la racine carrée est exacte (ou que son arrondi
-vers le bas l'est).
+puis de le comparer à _d_. Or, ce raisonnement suppose que la racine carrée est exacte (ou presque).
 
 Voyons que la valeur d'une racine carrée peut être surprenante. Par exemple, considérons ce code C++: 
 
