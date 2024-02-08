@@ -100,7 +100,7 @@ boucle:                         //
         udiv    x21, x20, x28   // 
         mul     x21, x21, x28   // 
         cmp     x20, x21        //       n == ((n / 5) * 5);
-                                //      f
+                                //
         add     x20, x20, 1     //       n++;
         b       boucle          //     }
 prochain_test:                  //
