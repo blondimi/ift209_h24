@@ -11,7 +11,7 @@ entier non signé _n_. Il est tentant de calculer la racine carrée de _n_ dans 
 puis de le comparer à _d_. Or, ce raisonnement suppose que la racine carrée est exacte (ou que son arrondi
 vers le bas l'est).
 
-Voyons que le résultat peut être surprenant. Par exemple, considérons ce code C++: 
+Voyons que la valeur d'une racine carrée peut être surprenante. Par exemple, considérons ce code C++: 
 
 ```c++
   unsigned long n = 9007199254740992;
