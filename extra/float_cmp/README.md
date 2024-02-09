@@ -14,7 +14,7 @@ Il est bien connu que cet algorithme détermine correctement si un nombre _n_ es
      d ← 2
 
      tant que d ≤ √n:
-       si d divisible n:
+       si d divise n:
          retourner faux
 
        d ← d + 1
@@ -30,7 +30,7 @@ approximent les vraies valeurs. Par exemple, considérons ce code:
  double   y = x;
 ```
 
-La valeur de ``y``` n'est pas la même que celle de ```x```. En fait, ```y``` est inférieur à ```x```:
+La valeur de ```y``` n'est pas la même que celle de ```x```. En fait, ```y``` est ***inférieure*** à ```x```:
 
 ```
 x = 9223372036809340154
@@ -38,9 +38,9 @@ y = 9223372036809339904
 ```
 
 Ainsi, le calcul de la racine carrée de ```x``` risque d'être suffisamment erroné pour que l'algorithme
-ci-dessus échoue. Toutefois, ceci n'est pas le cas; l'implémentation ci-dessous est correcte! Pour les
-personnes (trop) curieuses (pour leur propre bien), voici une preuve que j'ai rédigée qui dépasse
-largement le cadre du cours: [<img src="./preuve.png">](./preuve.pdf).
+ci-dessus échoue. Toutefois, ce n'est pas le cas, les erreurs sont suffisamment petites pour que
+l'implémentation ci-dessous est correcte! Pour les personnes (trop) curieuses (pour leur propre bien),
+voici une preuve que j'ai pondue qui dépasse largement le cadre du cours: [<img src="./preuve.png">](./preuve.pdf).
 
 ```c++
 bool est_premier(uint64_t x)                                                    
@@ -120,7 +120,9 @@ divisibles par 5, et de répéter l'expérience 1000 fois:
 ```
 
 Sur ma machine, le premier test (qui utilise seulement les entiers) termine en 30.570 secondes, alors que le second
-test (qui utilise les nombres en virgule flottante) termine en 2 minutes 42.290 secondes! Voici les deux implémentations:
+test (qui utilise les nombres en virgule flottante) termine en 2 minutes 42.290 secondes! Notons que ces résultats
+sont à prendre avec un grain de sel comme il s'agit d'une machine virtuelle (et non matérielle).
+Voici les deux implémentations utilisées:
 
 ```c
 // Approche A ////////////////////
