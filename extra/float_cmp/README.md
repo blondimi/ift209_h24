@@ -4,22 +4,64 @@ Suite au devoir 2 de la session H24, plusieurs questions ont surgi sur des compa
 de nombres en virgule flottante. Bien qu'ils ne soient introduits que vers la fin de la session, voyons pourquoi il est
 risqué de les utiliser.
 
-## Tester si d ≤ √n
+## Test de primalité avec divisions successives jusqu'à √n
 
-Supposons que l'on désire tester si un entier non signé _d_ est inférieur ou égal à la racine carrée d'un
-entier non signé _n_. Il est tentant de calculer la racine carrée de _n_ dans un nombre en virgule flottante,
-puis de le comparer à _d_. Or, ce raisonnement suppose que la racine carrée est exacte (ou presque).
+Il est bien connu que cet algorithme détermine correctement si un nombre _n_ est premier:
 
-Voyons que la valeur d'une racine carrée peut être surprenante. Par exemple, considérons ce code C++: 
+```
+  si n ≤ 1: retourner faux
+  sinon:
+     d ← 2
+
+     tant que d ≤ √n:
+       si d divisible n:
+         retourner faux
+
+       d ← d + 1
+
+    retourner vrai
+```
+
+Or, il est risqué d'implémenter cet algorithme à l'aide de nombres en virgule flottante puisque ceux-ci
+approximent les vraies valeurs. Par exemple, considérons ce code:
 
 ```c++
-  unsigned long n = 9007199254740992;
-  double        x = sqrt(n);
-  double        y = (x * x) - n;
+ uint64_t x = 9223372036809340154;
+ double   y = x;
 ```
-Celui-ci se termine avec ```y = 2```. Autrement dit, ce code indique que _(√n)² - n = 2_, alors que mathématiquement
-la différence devrait être nulle! Pire encore, en débutant avec ```n = 9007199254740992000```, on termine avec
-```y = 1024```.
+
+La valeur de ``y``` n'est pas la même que celle de ```x```. En fait, ```y``` est inférieur à ```x```:
+
+```
+x = 9223372036809340154
+y = 9223372036809339904
+```
+
+Ainsi, le calcul de la racine carrée de ```x``` risque d'être suffisamment erroné pour que l'algorithme
+ci-dessus échoue. Toutefois, ceci n'est pas le cas; l'implémentation ci-dessous est correcte! Pour les
+personnes (trop) curieuses (pour leur propre bien), voici une preuve que j'ai rédigée qui dépasse
+largement le cadre du cours: [<img src="./preuve.png">](./preuve.pdf).
+
+```c++
+bool est_premier(uint64_t x)                                                    
+{                                                                               
+  if (x <= 1)                                                                   
+    return false;                                                               
+                                                                                
+  double   y = x;                                                               
+  double   z = sqrt(y);                                                         
+  uint64_t d = 2;                                                               
+                                                                                
+  while (d <= z) {                                                              
+    if (x % d == 0)                                                             
+      return false;                                                             
+                                                                                
+    d++;                                                                        
+  }                                                                             
+                                                                                
+  return true;                                                                  
+}                                                                               
+```
 
 ## Tester si n est divisible par d
 
@@ -31,7 +73,7 @@ Dans un langage comme C++, il suffit de tester ```n % d == 0```. Or, rappelons q
 il n'y a pas de modulo. Ainsi, nous pouvons plutôt combiner une division entière et une multiplication:
 
 ```c++
-bool est_divisible_A(unsigned long n, unsigned long d)
+bool est_divisible_A(uint64_t n, uint64_t d)
 {
   return (n == ((n / d) * d));
 }
@@ -50,10 +92,10 @@ alors on calcule _23 ÷ 5 = 4_ et _23 / 5 = 4.6_, et, puisque _4 ≠ 4.6_, on en
 divisible par _5_ (ce qui est correct). En général, la procédure s'implémente comme suit:
 
 ```c++
-bool est_divisible_B(unsigned long n, unsigned long d)
+bool est_divisible_B(uint64_t n, uint64_t d)
 {
-  unsigned long k = n / d;
-  double        x = ((double)n) / ((double)d);
+  uint64_t k = n / d;
+  double   x = ((double)n) / ((double)d);
 
   return (k == x);
 }
@@ -87,8 +129,8 @@ test (qui utilise les nombres en virgule flottante) termine en 2 minutes 42.290 
 main:                           // int main()
         mov     x28, 5          // {
         mov     x27, 1048576    //
-                                //   unsigned long n;
-        mov     x19, 1000       //   unsigned long i = 1000;
+                                //   uint64_t n;
+        mov     x19, 1000       //   uint64_t i = 1000;
 repeter_test:                   //
         cbz     x19, fin        //   while (i != 0) {
         mov     x20, 2          //     n = 2;
@@ -117,8 +159,8 @@ main:                           // int main()
         mov     x28, 5          // {
         fmov    d15, 5.0        //
         mov     x27, 1048576    //
-                                //   unsigned long n;
-        mov     x19, 1000       //   unsigned long i = 1000;
+                                //   uint64_t n;
+        mov     x19, 1000       //   uint64_t i = 1000;
 repeter_test:                   //
         cbz     x19, fin        //   while (i != 0) {
         mov     x20, 2          //     n = 2;
