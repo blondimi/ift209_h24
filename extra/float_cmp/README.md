@@ -42,7 +42,7 @@ Ainsi, le calcul de la racine carrée de ```x``` risque d'être suffisamment err
 implémentation soit correcte! Pour les personnes (trop) curieuses (pour leur propre bien),
 voici une preuve que j'ai pondue qui dépasse largement le cadre du cours:
 
-[<img src="./apercu.png">](./preuve.pdf).
+[<img src="./apercu.png">](./preuve.pdf)
 
 ## Tester si n est divisible par d
 
