@@ -37,31 +37,12 @@ x = 9223372036809340154
 y = 9223372036809339904
 ```
 
-Ainsi, le calcul de la racine carrée de ```x``` risque d'être suffisamment erroné pour que l'algorithme
-ci-dessus échoue. Toutefois, ce n'est pas le cas, les erreurs sont suffisamment petites pour que
-l'implémentation ci-dessous est correcte! Pour les personnes (trop) curieuses (pour leur propre bien),
-voici une preuve que j'ai pondue qui dépasse largement le cadre du cours: [<img src="./preuve.png">](./preuve.pdf).
+Ainsi, le calcul de la racine carrée de ```x``` risque d'être suffisamment erroné pour que le programme
+échoue. Toutefois, ce n'est pas le cas, les erreurs sont suffisamment petites pour qu'une telle
+implémentation soit correcte! Pour les personnes (trop) curieuses (pour leur propre bien),
+voici une preuve que j'ai pondue qui dépasse largement le cadre du cours:
 
-```c++
-bool est_premier(uint64_t x)                                                    
-{                                                                               
-  if (x <= 1)                                                                   
-    return false;                                                               
-                                                                                
-  double   y = x;                                                               
-  double   z = sqrt(y);                                                         
-  uint64_t d = 2;                                                               
-                                                                                
-  while (d <= z) {                                                              
-    if (x % d == 0)                                                             
-      return false;                                                             
-                                                                                
-    d++;                                                                        
-  }                                                                             
-                                                                                
-  return true;                                                                  
-}                                                                               
-```
+[<img src="./apercu.png">](./preuve.pdf).
 
 ## Tester si n est divisible par d
 
