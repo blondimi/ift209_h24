@@ -51,7 +51,7 @@ Dans le reste du document, nous faisons ces hypothèses standards:
 \item les valeurs de type \mintinline{cpp}{double} sont représentées
   en nombre en virgule flottante double précision binaire de la norme
   IEEE 754, avec le mode d'arrondi qui approxime au nombre le plus
-  près, et où un bris d'égalité se fait vers le nombre dont le dernier
+  près, où les bris d'égalité se font vers le nombre dont le dernier
   bit est pair.
 \end{itemize}
 
@@ -60,7 +60,7 @@ Dans le reste du document, nous faisons ces hypothèses standards:
 Rappelons, qu'étant donné $x \in \R \setminus \{0\}$, nous écrivons
 $\overline{x}$ afin de dénoter le nombre en virgule flottante
 normalisé arrondi au nombre le plus près de $x$, et où un bris
-d'égalité se fait vers le nombre dont le dernier chiffre est
+d'égalité se fait vers le nombre dont le dernier bit est
 pair. Rappelons également que l'erreur relative de $x$ est définie par
 $\mathrm{err}(x) \defeq (x - \overline{x}) / x$.
 
