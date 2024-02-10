@@ -38,7 +38,7 @@ y = 9223372036809339904
 ```
 
 Ainsi, le calcul de la racine carrée de ```x``` risque d'être suffisamment erroné pour que le programme
-échoue. Toutefois, ce n'est pas le cas, les erreurs sont suffisamment petites pour qu'une telle
+échoue. Toutefois, ce n'est pas le cas, les erreurs sont assez petites pour qu'une telle
 implémentation soit correcte! Pour les personnes (trop) curieuses (pour leur propre bien),
 voici une preuve que j'ai pondue qui dépasse largement le cadre du cours:
 
