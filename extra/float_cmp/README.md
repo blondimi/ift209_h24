@@ -166,3 +166,11 @@ fin:                            //
         mov     x0, 0           // 
         bl      exit            // }
 ```
+
+J'ai également exécuté le code C sur mon ordinateur x86-64 après compilation avec ```gcc -O0```.
+Pour 1000 répétitions, le premier test (qui utilise seulement les entiers) termine en 3.729 secondes,
+alors que le second test (qui utilise les nombres en virgule flottante) termine en 4.450 secondes.
+Pour 10000 répétitions, les tests terminent respectivement en 36.809 secondes et 43.733 secondes.
+
+J'ai aussi considéré adapter le code ARMv8 sur mon Rasperry Pi, mais son architecture ARMv6 ne
+possède pas d'instruction de division entière...
