@@ -104,6 +104,8 @@ Sur mon ordinateur, le premier test (qui utilise seulement les entiers) termine 
 second test (qui utilise les nombres en virgule flottante) termine en 2 minutes 42.290 secondes. Notons que ces résultats
 sont à prendre avec un grain de sel comme il s'agit d'une machine virtuelle (et non matérielle). J'ai donc répété l'expérience
 sur un Raspberry Pi 4 avec processeur Cortex-A72. Les deux tests terminent respectivement en 6.824 secondes et 11.296 secondes.
+En répétant 10 000 fois (plutôt que 1000 fois) sur le Raspberry Pi, les temps sont respectivement de 1 minute 8.457 secondes et
+1 minute 53.760 secondes.
 
 Voici les deux implémentations utilisées:
 
