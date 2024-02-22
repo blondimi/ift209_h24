@@ -90,3 +90,6 @@ fin:
 .section ".rodata"
 msg:    .asciz  "h4x0r!\n"                                                      
 ```
+
+Notons qu'il existe des logiciels plus sophistiqués qui permettent de naviguer plus facilement dans le
+code machine en identifiant les instructions associées.
