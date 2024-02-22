@@ -10,7 +10,7 @@ cette instruction se traduit vers ce code machine:
 
 ```
 1 0 0 01011 00 0 01100 000000 01011 01010
-                 ^^^^^        ^^^^^ ^^^^^
+                 ¯¯¯¯¯        ¯¯¯¯¯ ¯¯¯¯¯
                   x12          x11   x10
 ```
 
