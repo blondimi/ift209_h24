@@ -8,4 +8,5 @@
 ## Couverts dans les exercices des notes de cours
 
 - [Incrémenteur d'un entier non signé de 3 bits](https://simulator.io/board/YbKP4YzixR/2)
+- [Compteur digital sur 2 bits](http://simulator.io/board/i5GlBSDk82/13)
 - [Complément à deux d'un entier signé de 4 bits](https://simulator.io/board/62xEVn3AD8/1)
