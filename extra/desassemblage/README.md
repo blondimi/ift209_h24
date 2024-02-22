@@ -1,4 +1,4 @@
-# Déassemblage
+# Désassemblage
 
 Rappelons que l'assemblage de code source mène à du code machine. Comme mentionné en classe (H24), il est possible de déassembler le
 code machine afin de retrouver le code original en langage assemblage. Voyons un exemple simple de manipulation du code machine.
