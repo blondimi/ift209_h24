@@ -44,7 +44,7 @@ fin:
 msg:    .asciz  "h4x0r!\n"                                                      
 ```
 
-Lorsqu'on exécute ce programme, celui-ci ne fait rien et se termine, puisque ```b fin``` saute par-dessus le code d'affichage:
+Lorsqu'on exécute ce programme, celui-ci ne fait rien d'intéressant et se termine, puisque ```b fin``` saute par-dessus le code d'affichage:
 
 ![Résultat de l'exécution](./img/0.png)
 
