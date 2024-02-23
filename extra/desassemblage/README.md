@@ -64,7 +64,7 @@ machine de ```b fin```. Remplaçons ```03 00 00 14``` par ```1F 20 03 D5``` et s
 
 ![Modification du code machine](./img/3.png)
 
-Exécutons maintenant l'exécutable ```./programme``` (sans recompiler son code source). Il affiche maintenant
+Exécutons maintenant l'exécutable ```./programme```, et ce ***sans recompiler*** son code source. Il affiche maintenant
 un message!
 
 ![Résultat de la deuxième exécution](./img/4.png)
